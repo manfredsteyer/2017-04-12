@@ -1,0 +1,12 @@
+
+input.ng-valid {
+    border-left-color: green;
+    border-left-style: solid;
+    border-left-width: 5px;
+}
+
+input.ng-invalid {
+    border-left-color: darkred;
+    border-left-style: solid;
+    border-left-width: 5px;
+}

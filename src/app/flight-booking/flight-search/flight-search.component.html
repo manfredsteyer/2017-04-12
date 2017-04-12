@@ -1,0 +1,69 @@
+<h1>Search a Flight</h1>
+
+<form #filterForm="ngForm">
+
+<div class="form-group">
+    <label>From:</label>
+    <input 
+        name="from"
+        required
+        minlength="3"
+        maxlength="30"
+        pattern="[A-Za-zöäüßÖÄÜ]+"
+        city="Graz,Wien,Hamburg,Frankfurt,München,Zürich"
+        [(ngModel)]="from"
+        class="form-control">
+
+<!--
+    <show-errors [errors]="filterForm?.controls['from'].errors">
+-->
+
+    <div *ngIf="!filterForm?.controls['from']?.valid">
+        Das ist doch nicht korrekt!
+        <pre>{{ filterForm?.controls['from']?.errors | json }}</pre>
+    </div>
+    <div *ngIf="filterForm?.controls['from']?.hasError('required')">
+        Das ist doch ein Pflichtfeld!
+    </div>    
+    <div *ngIf="filterForm?.controls['from']?.hasError('minlength')">
+        Das ist doch zu kurz!
+    </div>    
+    <div *ngIf="filterForm?.controls['from']?.hasError('maxlength')">
+        Das ist doch zu lang!
+    </div>    
+    <div *ngIf="filterForm?.controls['from']?.hasError('pattern')">
+        Bitte nur Buchstaben
+    </div>    
+    <div *ngIf="filterForm?.controls['from']?.hasError('city')">
+        Diese Stadt wird nicht angeflogen.
+    </div> 
+</div>    
+
+<div class="form-group">
+    <label>To:</label>
+    <input [(ngModel)]="to" name="to" class="form-control">
+</div>    
+
+<div class="form-group">
+    <button (click)="search()" class="btn btn-default">
+        Search
+    </button>
+</div>
+</form>   
+<!--
+[ngClass]="{ 'active': f == selectedFlight }"
+-->
+<table class="table table-striped">
+    <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight) ? 'orange' : ''  }">
+        <td>{{f.id}}</td>
+        <td>{{f.from | city:'short' }}</td>
+        <td>{{f.to | city:'long'}}</td>
+        <td>{{f.date | date:'dd.MM.yyyy HH:mm'}}</td>
+        <td><a (click)="select(f)">Auswählen</a></td>
+    </tr>
+</table> 
+
+<pre>Warenkorb
+--------------------
+{{ selectedFlight | json }}    
+</pre>
