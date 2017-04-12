@@ -3,24 +3,28 @@ import { FlightService } from './flight-search/flight.service';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { SharedModule } from './../shared/shared.module';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { ReactiveFlightSearchComponent } from "app/flight-booking/reactive-flight-search/reactive-flight-search.component";
 
 @NgModule({
     imports: [
         FormsModule, 
+        ReactiveFormsModule,
         CommonModule, 
         SharedModule
     ],
     declarations: [
         FlightSearchComponent,
-        PassengerSearchComponent
+        PassengerSearchComponent,
+        ReactiveFlightSearchComponent
     ],
     providers: [
     ],
     exports: [
         FlightSearchComponent,
-        PassengerSearchComponent
+        PassengerSearchComponent,
+        ReactiveFlightSearchComponent
     ],
 })
 export class FlightBookingModule { }

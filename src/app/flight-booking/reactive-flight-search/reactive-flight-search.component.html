@@ -1,6 +1,17 @@
 <h1>Search a Flight</h1>
 
-<form #filterForm="ngForm" roundTrip>
+<form [formGroup]="filterForm">
+
+
+<h2>Dynamic</h2>
+
+<div *ngFor="let item of formMetadata">
+    <label>{{item.label}}</label>
+    <input class="form-control" [formControlName]="item.name">
+</div>    
+
+
+<h2>Static</h2>
 
 <div *ngIf="filterForm?.hasError('roundTrip')">
     Rundflüge sind nicht erlaubt!
@@ -11,13 +22,7 @@
     <label>From:</label>
     <input 
         name="from"
-        required
-        minlength="3"
-        maxlength="30"
-        pattern="[A-Za-zöäüßÖÄÜ]+"
-        city="Graz,Wien,Hamburg,Frankfurt,München,Zürich"
-        cityAsync
-        [(ngModel)]="from"
+        formControlName="from"
         class="form-control">
 
 <!--
@@ -58,7 +63,7 @@
 
 <div class="form-group">
     <label>To:</label>
-    <input [(ngModel)]="to" name="to" class="form-control">
+    <input formControlName="to" name="to" class="form-control">
 </div>    
 
 <div class="form-group">
