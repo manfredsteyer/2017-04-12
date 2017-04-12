@@ -1,5 +1,5 @@
 import { CityValidator } from './../../shared/validation/city-validator';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray, AbstractControl } from '@angular/forms';
 import { FlightService } from './../flight-search/flight.service';
 import { Flight } from './../../entities/flight';
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -45,11 +45,15 @@ export class ReactiveFlightSearchComponent {
                 ],
                 to: [
                     'Hamburg'
-                ]
+                ],
+                furtherOptions: fb.group({
+                    direct: [false],
+                    oneWay: [false]
+                }),
+                stopOvers: fb.array([])
             });
 
             this.filterForm.validator = Validators.compose([CityValidator.roundTrip]);
-
 
             this.filterForm.valueChanges.subscribe(value => {
                 console.debug('valueChanges auf Formular-Ebene', value);
@@ -59,6 +63,15 @@ export class ReactiveFlightSearchComponent {
                 console.debug('valueChanges auf Ebene von from', value);
             });
 
+    }
+
+    addStopover() {
+        let stopOvers = this.filterForm.controls['stopOvers'] as FormArray;
+
+        stopOvers.push(this.fb.group({
+            city: [],
+            duration: []
+        }));
     }
 
     search(): void {

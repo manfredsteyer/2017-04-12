@@ -18,6 +18,13 @@
     <pre>{{ filterForm?.errors | json }} </pre>
 </div>    
 
+<div class="panel panel-default" formGroupName="furtherOptions">
+  <div class="panel-body">
+    <input formControlName="direct" type="checkbox"> Direct <br>
+    <input formControlName="oneWay" type="checkbox"> One Way <br>
+  </div>
+</div>
+
 <div class="form-group">
     <label>From:</label>
     <input 
@@ -60,6 +67,26 @@
         Diese Stadt wird nicht angeflogen.
     </div> 
 </div>    
+
+<div formArrayName="stopOvers">
+<div *ngFor="let stopover of filterForm.get('stopOvers')?.controls; let i = index">
+    <div [formGroupName]="i">
+        <div class="form-group">
+            <label>Stepover:</label>
+            <input formControlName="city" name="city" class="form-control">
+        </div>    
+        <div class="form-group">
+            <label>Duration:</label>
+            <input formControlName="duration" name="duration" class="form-control">
+        </div>    
+    </div>
+</div>
+</div>
+
+<div class="form-group">
+    <button class="btn btn-default" (click)="addStopover()">Hinzufügen</button>
+</div>    
+
 
 <div class="form-group">
     <label>To:</label>

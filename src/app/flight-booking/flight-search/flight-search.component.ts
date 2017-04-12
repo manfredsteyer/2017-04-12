@@ -1,3 +1,4 @@
+import { EventService } from './../../event.service';
 import { FlightService } from './flight.service';
 import { Flight } from './../../entities/flight';
 import { Component, ViewEncapsulation } from '@angular/core';
@@ -17,8 +18,20 @@ export class FlightSearchComponent {
     
     selectedFlight: Flight;
 
-    constructor(private flightService: FlightService) {
+    showBasket = false;
+
+    constructor(
+        private flightService: FlightService,
+        private eventService: EventService) {
         console.debug('component');
+    }
+
+    show() {
+        this.showBasket = true;
+    }
+
+    hide() {
+        this.showBasket = false;
     }
 
     search(): void {
@@ -37,7 +50,10 @@ export class FlightSearchComponent {
     }
 
     select(f: Flight): void {
+
         this.selectedFlight = f;
+        this.eventService.flightSelectedSubject.next(f);
+        
     }
 
 }

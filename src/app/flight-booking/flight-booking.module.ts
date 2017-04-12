@@ -1,3 +1,4 @@
+import { BasketComponent } from './../basket/basket.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 import { FlightService } from './flight-search/flight.service';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
@@ -15,6 +16,7 @@ import { ReactiveFlightSearchComponent } from "app/flight-booking/reactive-fligh
         SharedModule
     ],
     declarations: [
+        BasketComponent,
         FlightSearchComponent,
         PassengerSearchComponent,
         ReactiveFlightSearchComponent

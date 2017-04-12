@@ -84,3 +84,8 @@
 --------------------
 {{ selectedFlight | json }}    
 </pre>
+
+<a (click)="show()">Show Basket</a> | <a (click)="hide()">Hide Basket</a>
+<div *ngIf="showBasket">
+<basket></basket>
+</div>
