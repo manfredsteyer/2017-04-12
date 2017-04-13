@@ -4,7 +4,6 @@
 
 <div *ngIf="filterForm?.hasError('roundTrip')">
     Rundflüge sind nicht erlaubt!
-    <pre>{{ filterForm?.errors | json }} </pre>
 </div>    
 
 <div class="form-group">
@@ -32,7 +31,6 @@
 
     <div *ngIf="!filterForm?.controls['from']?.valid">
         Das ist doch nicht korrekt!
-        <pre>{{ filterForm?.controls['from']?.errors | json }}</pre>
     </div>
 
     <div *ngIf="filterForm?.controls['from']?.hasError('cityAsync')">
@@ -77,6 +75,7 @@
         <td>{{f.to | city:'long'}}</td>
         <td>{{f.date | date:'dd.MM.yyyy HH:mm'}}</td>
         <td><a (click)="select(f)">Auswählen</a></td>
+        <td><a [routerLink]="['/flight-edit', f.id, { showDetails: true }]">Edit</a></td>
     </tr>
 </table> 
 

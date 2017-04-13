@@ -1,3 +1,5 @@
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
+import { FlightBookingRouterModule } from './flight-booking.routes';
 import { BasketComponent } from './../basket/basket.component';
 import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
 import { FlightService } from './flight-search/flight.service';
@@ -13,13 +15,15 @@ import { ReactiveFlightSearchComponent } from "app/flight-booking/reactive-fligh
         FormsModule, 
         ReactiveFormsModule,
         CommonModule, 
-        SharedModule
+        SharedModule,
+        FlightBookingRouterModule
     ],
     declarations: [
         BasketComponent,
         FlightSearchComponent,
         PassengerSearchComponent,
-        ReactiveFlightSearchComponent
+        ReactiveFlightSearchComponent,
+        FlightEditComponent
     ],
     providers: [
     ],

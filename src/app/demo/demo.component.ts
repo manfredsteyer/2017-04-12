@@ -29,7 +29,7 @@ export class DemoComponent implements OnInit, OnDestroy {
                         .do(value => { 
                             console.debug('New date', value);
                         })
-                        .publish();
+                       .publish();
         
         time$.connect();
 

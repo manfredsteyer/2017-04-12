@@ -1,3 +1,5 @@
+import { HomeComponent } from './home/home.component';
+import { AppRouterModule } from './app.routes';
 import { LookaheadComponent } from './lookahead/lookahead.component';
 import { BasketComponent } from './basket/basket.component';
 import { EventService } from './event.service';
@@ -16,13 +18,15 @@ import { AppComponent } from './app.component';
     FormsModule,
     ReactiveFormsModule,
     HttpModule,
-    FlightBookingModule
+    FlightBookingModule,
+    AppRouterModule
   ], 
   declarations: [
     // Shell
     LookaheadComponent,
     AppComponent,
-    DemoComponent
+    DemoComponent,
+    HomeComponent
   ],
   providers: [
     EventService
