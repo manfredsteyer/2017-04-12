@@ -75,7 +75,7 @@
         <td>{{f.to | city:'long'}}</td>
         <td>{{f.date | date:'dd.MM.yyyy HH:mm'}}</td>
         <td><a (click)="select(f)">Auswählen</a></td>
-        <td><a [routerLink]="['/flight-edit', f.id, { showDetails: true }]">Edit</a></td>
+        <td><a [routerLink]="['../flight-edit', f.id, { showDetails: true }]">Edit</a></td>
     </tr>
 </table> 
 
@@ -84,7 +84,9 @@
 {{ selectedFlight | json }}    
 </pre>
 
+<!--
 <a (click)="show()">Show Basket</a> | <a (click)="hide()">Hide Basket</a>
 <div *ngIf="showBasket">
 <basket></basket>
 </div>
+-->

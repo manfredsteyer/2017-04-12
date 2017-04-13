@@ -1,3 +1,5 @@
+import { FlightEditResolver } from './flight-edit/flight-edit.resolver';
+import { FlightBookingComponent } from './flight-booking.component';
 import { FlightEditComponent } from './flight-edit/flight-edit.component';
 import { FlightBookingRouterModule } from './flight-booking.routes';
 import { BasketComponent } from './../basket/basket.component';
@@ -23,9 +25,12 @@ import { ReactiveFlightSearchComponent } from "app/flight-booking/reactive-fligh
         FlightSearchComponent,
         PassengerSearchComponent,
         ReactiveFlightSearchComponent,
-        FlightEditComponent
+        FlightEditComponent,
+        FlightBookingComponent
     ],
     providers: [
+        FlightService,
+        FlightEditResolver
     ],
     exports: [
         FlightSearchComponent,

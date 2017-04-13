@@ -1,3 +1,5 @@
+import { ExitGuard } from './exit/exit.guard';
+import { AuthGuard } from './auth/auth.guard';
 import { CityAsyncValidationDirective } from './validation/city-async.validation.directive';
 import { RoundTripValidationDirective } from './validation/round-trip.validation.directive';
 import { CityValidationDirective } from './validation/city.validation.directive';
@@ -15,7 +17,10 @@ import { CommonModule } from '@angular/common'
         RoundTripValidationDirective,
         CityAsyncValidationDirective
     ],
-    providers: [],
+    providers: [
+        AuthGuard,
+        ExitGuard
+    ],
     exports: [
         CityPipe,
         CityValidationDirective,

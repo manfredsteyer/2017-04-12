@@ -1,3 +1,4 @@
+import { BasketComponent } from './basket/basket.component';
 import { PassengerSearchComponent } from './flight-booking/passenger-search/passenger-search.component';
 import { FlightEditComponent } from './flight-booking/flight-edit/flight-edit.component';
 import { ReactiveFlightSearchComponent } from './flight-booking/reactive-flight-search/reactive-flight-search.component';
@@ -11,6 +12,11 @@ const APP_ROUTES: Routes = [
         path: '',
         redirectTo: 'home',
         pathMatch: 'prefix'
+    },
+    {
+        path: 'basket',
+        component: BasketComponent,
+        outlet: 'aux'
     },
     {
         path: 'demo',

@@ -27,6 +27,25 @@ export class FlightService {
                 .http
                 .get(url, { search, headers  })
                 .map(resp => resp.json());
+
     }
+
+    findById(id: string): Observable<Flight> {
+        
+        let url = 'http://www.angular.at/api/flight';
+
+        let search = new URLSearchParams();
+        search.set('id', id);
+
+        let headers = new Headers();
+        headers.set('Accept', 'application/json');
+
+        return this
+                .http
+                .get(url, { search, headers  })
+                .map(resp => resp.json())
+                .delay(3000);  
+    }
+
 
 }
